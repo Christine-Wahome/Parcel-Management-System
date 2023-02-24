@@ -1,0 +1,52 @@
+
+
+<div class="container">
+    <div class="form-input">
+        <form (ngSubmit)="addParcel()" [formGroup]="registerForm">
+            <div class="form-group">
+                <label for="cusName"> Name</label>
+                <input formControlName="cusName" [ngClass]="{'is-invalid':submitted && registerForm.controls.cusName.errors}" type="text" class="form-control">
+                <div *ngIf=" !registerForm.get('cusName')?.valid && registerForm.get('cusName')?.touched
+                " class="text-danger">
+                    <div *ngIf="registerForm.get('cusName')!.errors!['required']">
+                       Name is required
+                    </div>
+                    <div *ngIf="registerForm.get('cusName')!.errors!['minlength']">
+                       Name Should be atleast 4 characters
+                    </div>  
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input formControlName="email" type="email" class="form-control">
+                <div *ngIf=" !registerForm.get('email')?.valid && registerForm.get('email')?.touched
+                " class="text-danger">
+                    <div *ngIf="registerForm.get('email')!.errors!['required']">
+                      Email is required
+                    </div>
+                    <div *ngIf="registerForm.get('email')!.errors!['email']">
+                      Enter Valid Email
+                    </div>  
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="destination">Destination</label>
+                <input formControlName="destination" type="text" class="form-control">
+                <div *ngIf=" !registerForm.get('destination')?.valid && registerForm.get('destination')?.touched
+                " class="text-danger">
+                    <div *ngIf="registerForm.get('destination')!.errors!['required']">
+                        Destination is required
+                    </div>
+                    </div>
+              </div>
+        
+        
+    
+        <button type="submit">Save</button>
+
+    </form>
+        
+    </div>
+    </div>
